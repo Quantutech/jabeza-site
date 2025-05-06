@@ -51,7 +51,7 @@ const AdditionalSections = () => {
               <div className={styles.cardIcon}>✏️</div>
               <h3 className={styles.cardTitle}>Screenwriting</h3>
               <p className={styles.cardDescription}>
-                Compelling stories that capture your audience's attention. Our writers craft narratives that engage and inspire.
+                Compelling stories that capture your audience&apos;s attention. Our writers craft narratives that engage and inspire.
               </p>
               <Link href="/services/screenwriting" className={styles.cardLink}>
                 Learn More
@@ -162,7 +162,7 @@ const AdditionalSections = () => {
             {/* Testimonial 1 */}
             <div className={styles.testimonialCard}>
               <div className={styles.testimonialText}>
-                "Jabeza Films transformed our brand story into a visual masterpiece. Their attention to detail and creative vision exceeded our expectations."
+              &ldquo;Jabeza Films transformed our brand story into a visual masterpiece. Their attention to detail and creative vision exceeded our expectations.&rdquo;
               </div>
               <div className={styles.testimonialAuthor}>
                 <div className={styles.authorAvatar} style={{ backgroundColor: '#e12727' }}></div>
@@ -176,7 +176,7 @@ const AdditionalSections = () => {
             {/* Testimonial 2 */}
             <div className={styles.testimonialCard}>
               <div className={styles.testimonialText}>
-                "Working with the team at Jabeza was a seamless experience from start to finish. They truly understood our vision and brought it to life."
+              &ldquo;Working with the team at Jabeza was a seamless experience from start to finish. They truly understood our vision and brought it to life.&rdquo;
               </div>
               <div className={styles.testimonialAuthor}>
                 <div className={styles.authorAvatar} style={{ backgroundColor: '#e12727' }}></div>
@@ -195,7 +195,7 @@ const AdditionalSections = () => {
         <div className={styles.container}>
           <h2 className={styles.ctaTitle}>Ready to Tell Your Story?</h2>
           <p className={styles.ctaDescription}>
-            Let's create something extraordinary together. Reach out to us and start your journey with Jabeza Films.
+            Let&apos;s create something extraordinary together. Reach out to us and start your journey with Jabeza Films.
           </p>
           <div className={styles.ctaButtons}>
             <Link href="/contact" className={styles.primaryButton}>
