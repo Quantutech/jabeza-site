@@ -193,13 +193,13 @@ const ScrollSection: React.FC = () => {
           }, 0.3)
           
           // Box transitions
-          .to(`.${styles.box1}, .${styles.box5}`, {
+          .to([`.${styles.box1}`, `.${styles.box5}`], {
             width: '0%',
             opacity: 0,
             borderWidth: 0,
             ease: 'power1.inOut'
           }, 0.6)
-          .to(`.${styles.box2}, .${styles.box4}`, { 
+          .to([`.${styles.box2}`, `.${styles.box4}`], { 
             width: '20%', 
             ease: 'power1.inOut' 
           }, 0.6)
@@ -222,7 +222,7 @@ const ScrollSection: React.FC = () => {
             height: '100vh', 
             ease: 'power2.inOut' 
           }, 0.65)
-          .to(`.${styles.box2}, .${styles.box4}`, {
+          .to([`.${styles.box2}`, `.${styles.box4}`], {
             width: '0%',
             opacity: 0,
             borderWidth: 0,
@@ -321,31 +321,33 @@ const ScrollSection: React.FC = () => {
   }, [styles]); // Add styles as a dependency
 
   return (
-    <div className={styles.scrollSection} ref={sectionRef}>
-      <div className={styles.progressBar}></div>
+    <div className={styles.scrollWrapper}>
+      <div className={styles.scrollSection} ref={sectionRef}>
+        <div className={styles.progressBar}></div>
 
-      <div className={styles.scrollContainer}>
-        <div className={styles.logoWrapper}>
-          <div className={styles.logo} ref={logoRef}>
-            <img 
-              ref={logoImgRef}
-              id="heroLogo" 
-              src="/images/JABEZA_Logo_red.svg" 
-              alt="Jabeza Films Logo"
-            />
-          </div>
-        </div>
-
-        <div className={styles.boxesContainer} ref={boxesRef}>
-          <div className={`${styles.box} ${styles.box1}`}></div>
-          <div className={`${styles.box} ${styles.box2}`}></div>
-          <div className={`${styles.box} ${styles.box3}`}>
-            <div className={styles.mainText} ref={mainTextRef}>
-              Storytelling<br/>with soul
+        <div className={styles.scrollContainer}>
+          <div className={styles.logoWrapper}>
+            <div className={styles.logo} ref={logoRef}>
+              <img 
+                ref={logoImgRef}
+                id="heroLogo" 
+                src="/images/JABEZA_Logo_red.svg" 
+                alt="Jabeza Films Logo"
+              />
             </div>
           </div>
-          <div className={`${styles.box} ${styles.box4}`}></div>
-          <div className={`${styles.box} ${styles.box5}`}></div>
+
+          <div className={styles.boxesContainer} ref={boxesRef}>
+            <div className={`${styles.box} ${styles.box1}`}></div>
+            <div className={`${styles.box} ${styles.box2}`}></div>
+            <div className={`${styles.box} ${styles.box3}`}>
+              <div className={styles.mainText} ref={mainTextRef}>
+                Storytelling<br/>with soul
+              </div>
+            </div>
+            <div className={`${styles.box} ${styles.box4}`}></div>
+            <div className={`${styles.box} ${styles.box5}`}></div>
+          </div>
         </div>
       </div>
     </div>

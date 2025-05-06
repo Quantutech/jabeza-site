@@ -5,27 +5,15 @@
     padding: 0 20px;
   }
   
-  /* Hero Section */
-  .heroSection {
-    background-color: #ff92e9;
-    padding: 100px 0;
-    text-align: center;
-    color: #fff;
+  /* Ensure there's no gap between sections */
+  .jabeza-next-section {
+    margin-top: -1px; /* Negative margin to remove any gap */
+    padding-top: 0;
+    position: relative;
+    z-index: 300;
   }
   
-  .heroTitle {
-    font-size: 3.5rem;
-    margin-bottom: 20px;
-    color: #e12727;
-    font-weight: bold;
-  }
-  
-  .heroSubtitle {
-    font-size: 1.5rem;
-    max-width: 800px;
-    margin: 0 auto 40px;
-    color: #333;
-  }
+  /* We removed the Hero Section */
   
   .ctaButtons {
     display: flex;
@@ -72,10 +60,13 @@
     color: white;
   }
   
-  /* Services Section */
+  /* Services Section - Now First Section */
   .servicesSection {
+    position: relative;
+    z-index: 300;
     padding: 100px 0;
     background-color: white;
+    margin-top: 0;
   }
   
   .sectionTitle {
@@ -160,6 +151,8 @@
   
   /* Recent Work Section */
   .recentWorkSection {
+    position: relative;
+    z-index: 300;
     padding: 100px 0;
     background-color: #f9f9f9;
   }
@@ -243,6 +236,8 @@
   
   /* Testimonials Section */
   .testimonialsSection {
+    position: relative;
+    z-index: 300;
     padding: 100px 0;
     background-color: #ff92e9;
   }
@@ -305,6 +300,8 @@
   
   /* CTA Section */
   .ctaSection {
+    position: relative;
+    z-index: 300;
     padding: 100px 0;
     background-color: #e12727;
     color: white;
@@ -345,6 +342,8 @@
   
   /* Footer */
   .footer {
+    position: relative;
+    z-index: 300;
     background-color: #222;
     color: white;
     padding: 70px 0 30px;

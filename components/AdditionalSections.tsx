@@ -1,29 +1,29 @@
 "use client"
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import Link from 'next/link';
 import styles from './AdditionalSections.module.css';
 
 const AdditionalSections = () => {
+  // Add an effect to ensure the AdditionalSections component appears correctly
+  useEffect(() => {
+    // Force a layout reflow to ensure proper rendering
+    const nextSection = document.querySelector('.jabeza-next-section');
+    if (nextSection) {
+      nextSection.classList.add(styles.active);
+    }
+    
+    // Add a class to the body to help with transitions
+    document.body.classList.add('additional-sections-loaded');
+    
+    // Cleanup function
+    return () => {
+      document.body.classList.remove('additional-sections-loaded');
+    };
+  }, []);
+
   return (
-    <div className="jabeza-next-section">
-      {/* Hero Section */}
-      <section className={styles.heroSection}>
-        <div className={styles.container}>
-          <h1 className={styles.heroTitle}>Storytelling With Soul</h1>
-          <p className={styles.heroSubtitle}>
-            We create cinematic experiences that resonate with audiences and leave lasting impressions
-          </p>
-          <div className={styles.ctaButtons}>
-            <Link href="/portfolio" className={styles.primaryButton}>
-              View Our Work
-            </Link>
-            <Link href="/contact" className={styles.secondaryButton}>
-              Get In Touch
-            </Link>
-          </div>
-        </div>
-      </section>
+    <div className="jabeza-next-section" style={{ marginTop: 0, paddingTop: 0 }}>
 
       {/* Services Section */}
       <section className={styles.servicesSection}>
