@@ -1,8 +1,7 @@
 "use client"
 
 import { useEffect, useRef } from 'react';
-import Image from 'next/image';
-import getConfig from 'next/config';
+import { getAssetPath } from '../utils/paths';
 import styles from '../styles/ScrollSection.module.css';
 
 const ScrollSection: React.FC = () => {
@@ -11,18 +10,18 @@ const ScrollSection: React.FC = () => {
   const logoImgRef = useRef<HTMLImageElement>(null);
   const boxesRef = useRef<HTMLDivElement>(null);
   const mainTextRef = useRef<HTMLDivElement>(null);
-
-  // Get base path from Next.js config for GitHub Pages compatibility
-  const { publicRuntimeConfig } = getConfig() || { publicRuntimeConfig: { basePath: '' } };
-  const basePath = publicRuntimeConfig.basePath || '';
   
   // Define logo paths with proper base path prefix
-  const redLogoPath = `${basePath}/images/JABEZA_Logo_red.svg`;
-  const pinkLogoPath = `${basePath}/images/JABEZA_Logo_pink.svg`;
+  const redLogoPath = getAssetPath('/images/JABEZA_Logo_red.svg');
+  const pinkLogoPath = getAssetPath('/images/JABEZA_Logo_pink.svg');
 
   useEffect(() => {
     // Only run on client-side
     if (typeof window === 'undefined') return;
+
+    // Define logo paths within useEffect to make them dependencies
+    const redLogo = redLogoPath;
+    const pinkLogo = pinkLogoPath;
 
     // Add visibility control for scroll elements - more comprehensive version
     const handleVisibility = () => {
@@ -93,7 +92,7 @@ const ScrollSection: React.FC = () => {
       
       // Preload pink logo
       const preloadImg = new Image();
-      preloadImg.src = pinkLogoPath;
+      preloadImg.src = pinkLogo;
 
       // Progress bar animation
       gsap.to(`.${styles.progressBar}`, {
@@ -129,7 +128,7 @@ const ScrollSection: React.FC = () => {
         gsap.set(mainText, { opacity: 0 });
 
         // Reset logo to red version at start
-        heroLogo.src = redLogoPath;
+        heroLogo.src = redLogo;
 
         // Calculate scaling based on actual dimensions
         const initialWidth = heroLogo.offsetWidth || 300;
@@ -255,10 +254,10 @@ const ScrollSection: React.FC = () => {
           start: 'top 90%',
           end: 'bottom top',
           onEnter: () => {
-            if (heroLogo) heroLogo.src = pinkLogoPath;
+            if (heroLogo) heroLogo.src = pinkLogo;
           },
           onLeaveBack: () => {
-            if (heroLogo) heroLogo.src = redLogoPath;
+            if (heroLogo) heroLogo.src = redLogo;
           }
         };
         
@@ -273,9 +272,9 @@ const ScrollSection: React.FC = () => {
             const scrollThreshold = containerHeight * 0.9;
             
             if (scrollPosition >= scrollThreshold) {
-              if (heroLogo) heroLogo.src = pinkLogoPath;
+              if (heroLogo) heroLogo.src = pinkLogo;
             } else {
-              if (heroLogo) heroLogo.src = redLogoPath;
+              if (heroLogo) heroLogo.src = redLogo;
             }
           }, { passive: true });
         }
@@ -324,7 +323,7 @@ const ScrollSection: React.FC = () => {
     return () => {
       window.removeEventListener('scroll', handleVisibility);
     };
-  }, [basePath]); // Use basePath as a dependency instead of styles
+  }, [redLogoPath, pinkLogoPath]); // Include all dependencies
 
   return (
     <div className={styles.scrollWrapper}>
@@ -334,14 +333,18 @@ const ScrollSection: React.FC = () => {
         <div className={styles.scrollContainer}>
           <div className={styles.logoWrapper}>
             <div className={styles.logo} ref={logoRef}>
-              <Image
-                ref={logoImgRef as any} // Type cast as any due to ref type incompatibility
-                id="heroLogo"
+              <img 
+                ref={logoImgRef}
+                id="heroLogo" 
                 src={redLogoPath}
                 alt="Jabeza Films Logo"
-                width={300}
-                height={100}
-                unoptimized
+                style={{ 
+                  maxWidth: '90vw',
+                  maxHeight: '90vh',
+                  width: 'auto',
+                  height: 'auto',
+                  objectFit: 'contain'
+                }}
               />
             </div>
           </div>
