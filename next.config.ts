@@ -1,5 +1,6 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
+import type { NextConfig } from 'next';
+
+const nextConfig: NextConfig = {
   reactStrictMode: true,
   
   // Enable static exports for GitHub Pages
@@ -29,6 +30,6 @@ const nextConfig = {
     // Don't fail the build on type errors
     ignoreBuildErrors: true,
   },
-}
+};
 
-module.exports = nextConfig;
+export default nextConfig;
