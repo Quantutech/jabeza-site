@@ -1,21 +1,22 @@
 /* Base styling */
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Roboto:wght@300;400;500&display=swap');
 
-:root {
-  --brand-red: #e12727;
-  --dark-bg: #0f0f0f;
-  --darker-bg: #080808;
-  --light-gray: #f5f5f5;
-  --medium-gray: #888888;
-  --transition-standard: all 0.3s ease;
-}
+.variables {
+    --brand-red: #e12727;
+    --dark-bg: #0f0f0f;
+    --darker-bg: #080808;
+    --light-gray: #f5f5f5;
+    --medium-gray: #888888;
+    --transition-standard: all 0.3s ease;
+  }
 
-.main {
-  font-family: 'Roboto', sans-serif;
-  color: var(--light-gray);
-  background-color: var(--dark-bg);
-  overflow-x: hidden;
-}
+  .main {
+    composes: variables;
+    font-family: 'Roboto', sans-serif;
+    color: var(--light-gray);
+    background-color: var(--dark-bg);
+    overflow-x: hidden;
+  }
 
 /* ==================
    Hero Section
